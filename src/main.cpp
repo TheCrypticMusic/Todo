@@ -7,13 +7,13 @@
 
 int main(int argc, const char *argv[])
 {
-
+    
     Data::File userAccountsFile;
     userAccountsFile.pathToFile = "account.txt";
 
-    if (userAccountsFile.isFile(userAccountsFile.pathToFile))
+    if (userAccountsFile.isFile("account.txt"))
     {
-        userAccountsFile.openFile(userAccountsFile.pathToFile);
+        userAccountsFile.openFile("account.txt");
         return 0;
     }
     else
