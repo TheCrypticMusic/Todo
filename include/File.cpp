@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include "Validation.hpp"
+#include "Login.hpp"
 
 bool Data::File::isFile(std::string filename)
 {
@@ -10,18 +12,21 @@ bool Data::File::isFile(std::string filename)
     {
         return true;
     }
+    std::cerr << "Error: File could not be found";
     return false;
 }
 
-int Data::File::openFile(std::string filename)
+int Data::File::readFile(std::string filename, struct Account::Validation validator)
 {
     loadFile();
     std::string fileLine;
-
+    Account::Login loginDetails;
+    
     while (std::getline(myFile, fileLine))
     {
-        std::cout << fileLine << std::endl;
+        validator.checkEmail("gibsonlp");
     }
+    closeFile();
     return 0;
 }
 
@@ -34,3 +39,4 @@ void Data::File::closeFile()
 {
     myFile.close();
 }
+

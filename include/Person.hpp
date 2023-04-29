@@ -17,4 +17,4 @@ namespace Account {
     };
 }
 
-#endif /* Person_hpp */
+#endif

@@ -22,12 +22,12 @@ bool Account::Login::accountDetails(std::string email, std::string password)
 bool Account::Login::checkEmail(std::string userProvidedEmail)
 {
     std::ifstream myFile;
-    myFile.open("account.txt");
+    // myFile.open("account.txt");
     std::string myText;
-    if (!myFile)
-    {
-        std::cerr << "Error: File could not be found";
-    }
+    // if (!myFile)
+    // {
+    //     std::cerr << "Error: File could not be found";
+    // }
 
     if (myFile.is_open())
     {

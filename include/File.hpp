@@ -2,6 +2,7 @@
 #define File_hpp
 #include <iostream>
 #include <fstream>
+#include "Validation.hpp"
 
 namespace Data
 {
@@ -10,14 +11,15 @@ namespace Data
 
     private:
         std::ifstream myFile;
+        void loadFile();
+        void closeFile();
 
     public:
         std::string pathToFile;
         bool isFile(const std::string filename);
-        int openFile(std::string filename);
-        void loadFile();
-        void closeFile();
+        int readFile(std::string filename, struct Account::Validation validator);
     };
+
 }
 
 #endif
