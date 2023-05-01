@@ -1,9 +1,11 @@
 #include "Validation.hpp"
 #include <iostream>
 
-bool Account::Validation::checkEmail(std::string userProvidedEmail)
+bool Account::Validation::validateEmail(std::string userProvidedEmail, std::string fileEmail)
 {
-  std::cout << userProvidedEmail << std::endl;
-  std::cout << "checkEmail function" << std::endl;
-  return true;
+  if (userProvidedEmail == fileEmail) 
+  {
+    return true;
+  }
+  return false;
 }

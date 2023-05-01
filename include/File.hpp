@@ -18,8 +18,10 @@ namespace Data
         std::string pathToFile;
         bool isFile(const std::string filename);
         int readFile(std::string filename, struct Account::Validation validator);
+        std::string splitStringByDelimiter(std::string line, int index, std::string delimiter);
+        bool findUserEmail(std::string userProvidedEmail, struct Account::Validation validator);
+        bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail, struct Account::Validation validator);
     };
-
 }
 
 #endif
