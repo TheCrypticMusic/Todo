@@ -3,58 +3,53 @@
 #include "File.hpp"
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 
 bool Account::Login::accountDetails(std::string email, std::string password)
 {
-
-    // if (Account::Login::checkEmail(email))
-    // {
-    //     if (Account::Login::checkPassword(password))
-    //     {
-    //         std::cout << "User account logged in";
-    //         return true;
-    //     }
-    // }
-
+    // TODO
     return false;
 };
 
-bool Account::Login::checkEmail(std::string userProvidedEmail)
+bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword)
 {
-    std::ifstream myFile;
-    // myFile.open("account.txt");
-    std::string myText;
-    // if (!myFile)
-    // {
-    //     std::cerr << "Error: File could not be found";
-    // }
+    Data::File myFile;
 
-    if (myFile.is_open())
+    bool userExists;
+
+    if (myFile.isFile())
     {
-        std::cout << "File found" << std::endl;
-        std::string myFileEmail;
-        std::string delimiter = ",";
-
-        while (getline(myFile, myText))
+        myFile.readFile();
+        userExists = checkEmail(userProvidedEmail, myFile);
+        if (userExists)
         {
-            myFileEmail = myText.substr(0, myText.find(delimiter));
-
-            if (myFileEmail.compare(userProvidedEmail) == 0)
-            {
-                std::cout << "User has provided the correct email" << std::endl;
-                return true;
-            }
+            checkPassword(userProvidedEmail, userProvidedPassword, myFile);
         }
-        std::cout << "Email not found" << std::endl;
-        return false;
     }
+    return true;
+}
 
+bool Account::Login::checkEmail(std::string userProvidedEmail, Data::File& file)
+{
+    bool emailFound;
+    emailFound = file.findUserEmail(userProvidedEmail);
+    if (emailFound) 
+    {
+        return true;
+    }
     return false;
 }
 
-bool Account::Login::checkPassword(std::string password)
+bool Account::Login::checkPassword(std::string userProvidedEmail, std::string userProvidedPassword, Data::File& file)
 {
+    bool correctPasswordForUser;
+    correctPasswordForUser = file.checkUserPassword(userProvidedEmail, userProvidedPassword);
+}
 
-    std::string myFilePassword;
-    return true;
+Account::Login::Login(std::string userProvidedEmail, std::string userProvidedPassword)
+{
+    bool correctDetails;
+
+    correctDetails = Account::Login::checkUserExists(userProvidedEmail, userProvidedPassword);
+
 }

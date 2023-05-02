@@ -2,7 +2,7 @@
 #define File_hpp
 #include <iostream>
 #include <fstream>
-#include "Validation.hpp"
+
 
 namespace Data
 {
@@ -13,14 +13,16 @@ namespace Data
         std::ifstream myFile;
         void loadFile();
         void closeFile();
+        std::string FILEPATH = "account.txt";
 
     public:
-        std::string pathToFile;
-        bool isFile(const std::string filename);
-        int readFile(std::string filename, struct Account::Validation validator);
+
+        bool isFile();
+        void readFile();
+
         std::string splitStringByDelimiter(std::string line, int index, std::string delimiter);
-        bool findUserEmail(std::string userProvidedEmail, struct Account::Validation validator);
-        bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail, struct Account::Validation validator);
+        bool findUserEmail(std::string userProvidedEmail);
+        bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail);
     };
 }
 

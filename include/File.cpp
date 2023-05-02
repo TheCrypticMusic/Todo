@@ -2,56 +2,47 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
-#include "Validation.hpp"
 #include "Login.hpp"
 
-bool Data::File::isFile(std::string filename)
+bool Data::File::isFile()
 {
 
-    if (std::filesystem::exists(filename))
+    if (std::filesystem::exists(FILEPATH))
     {
+        std::cout << "File found" << std::endl;
         return true;
     }
     std::cerr << "Error: File could not be found";
     return false;
 }
 
-int Data::File::readFile(std::string filename, struct Account::Validation validator)
+
+void Data::File::readFile()
 {
     loadFile();
-    // std::string fileLine;
-    // std::string fileEmail;
 
-    // while (std::getline(myFile, fileLine))
-    // {
-        
-    //     fileEmail = splitStringByDelimiter(fileLine, 0, ",");
-    //     validator.checkEmail();
-    // }
-    // closeFile();
-    return 0;
 }
 
-bool Data::File::findUserEmail(std::string userProvidedEmail, struct Account::Validation validator)
+bool Data::File::findUserEmail(std::string userProvidedEmail)
 {
     std::string fileLine;
     std::string fileEmail;
-    bool isFound;
 
     while (std::getline(myFile, fileLine))
-    {
+    {   
 
         fileEmail = splitStringByDelimiter(fileLine, 0, ",");
-        isFound = validator.validateEmail("gibsonlp@live.co.uk", fileEmail);
-        if (isFound)
-        { 
+        if (fileEmail == userProvidedEmail)
+        {
+            std::cout << "File Email: " << fileEmail << " User Provided Email: " << userProvidedEmail;
             return true;
         }
     }
+    std::cout << "User not found";
     return false;
 }
 // Combine findUserEmail with checkUserPassword;
-bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail, struct Account::Validation validator)
+bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail)
 {
 
     std::string fileLine;
@@ -63,14 +54,16 @@ bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string
     {
         fileEmail = splitStringByDelimiter(fileLine, 0, ",");
         filePassword = splitStringByDelimiter(fileLine, fileLine.find(",") + 1, ",");
+        //TODO
 
+        std::cout << fileEmail << " " << filePassword << std::endl;
     }
     return true;
 }
 
 void Data::File::loadFile()
 {
-    myFile.open(pathToFile);
+    myFile.open(FILEPATH);
 }
 
 void Data::File::closeFile()
@@ -83,6 +76,5 @@ std::string Data::File::splitStringByDelimiter(std::string line, int index, std:
     std::string newLine;
 
     newLine = line.substr(0, line.find(","));
-    std::cout << newLine;
     return newLine;
 }
