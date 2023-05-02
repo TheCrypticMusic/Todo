@@ -7,8 +7,7 @@ namespace Account {
 
   struct Validation {
 
-    bool validateEmail(std::string userProvidedEmail, std::string fileEmail);
-    bool     
+    bool validateEmail(std::string userProvidedEmail, std::string fileEmail);    
   }; 
 }
 

@@ -12,7 +12,10 @@ int main(int argc, const char *argv[])
     Data::File userAccountsFile;
     Account::User user;
     Account::Validation validator;
+    Account::Login login;
     bool userExists, validPassword;
+
+    
 
     userAccountsFile.pathToFile = "account.txt";
 
@@ -22,7 +25,7 @@ int main(int argc, const char *argv[])
         userExists = userAccountsFile.findUserEmail("gibsonlp@live.co.uk", validator);
         if (userExists)
         {
-            validPassword = userAccountsFile.checkUserPassword("test123", validator);
+            validPassword = userAccountsFile.checkUserPassword("test123", "test123", validator);
         }
         return 0;
     }
