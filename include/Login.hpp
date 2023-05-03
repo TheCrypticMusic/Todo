@@ -18,8 +18,8 @@ namespace Account
 
     private:
         bool checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword);
-        bool checkEmail(std::string userProvidedEmail, Data::File& file);
-        bool checkPassword(std::string userProvidedEmail, std::string userProvidedPassword, Data::File& file);
+        bool checkEmail(std::string userProvidedEmail);
+        bool checkPassword(std::string userProvidedEmail, std::string userProvidedPassword);
     };
 }
 

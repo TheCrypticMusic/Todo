@@ -19,20 +19,21 @@ bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string 
 
     if (myFile.isFile())
     {
-        myFile.readFile();
-        userExists = checkEmail(userProvidedEmail, myFile);
+        userExists = checkEmail(userProvidedEmail);
         if (userExists)
         {
-            checkPassword(userProvidedEmail, userProvidedPassword, myFile);
+            checkPassword(userProvidedEmail, userProvidedPassword);
         }
+       
     }
     return true;
 }
 
-bool Account::Login::checkEmail(std::string userProvidedEmail, Data::File& file)
+bool Account::Login::checkEmail(std::string userProvidedEmail)
 {
+    Data::File myFile;
     bool emailFound;
-    emailFound = file.findUserEmail(userProvidedEmail);
+    emailFound = myFile.findUserEmail(userProvidedEmail);
     if (emailFound) 
     {
         return true;
@@ -40,10 +41,16 @@ bool Account::Login::checkEmail(std::string userProvidedEmail, Data::File& file)
     return false;
 }
 
-bool Account::Login::checkPassword(std::string userProvidedEmail, std::string userProvidedPassword, Data::File& file)
+bool Account::Login::checkPassword(std::string userProvidedEmail, std::string userProvidedPassword)
 {
+    Data::File myFile;
     bool correctPasswordForUser;
-    correctPasswordForUser = file.checkUserPassword(userProvidedEmail, userProvidedPassword);
+    correctPasswordForUser = myFile.checkUserPassword(userProvidedPassword, userProvidedEmail);
+    if (correctPasswordForUser)
+    {
+        return true; 
+    }
+    return false;
 }
 
 Account::Login::Login(std::string userProvidedEmail, std::string userProvidedPassword)

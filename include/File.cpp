@@ -3,6 +3,7 @@
 #include <fstream>
 #include <filesystem>
 #include "Login.hpp"
+#include <vector>
 
 bool Data::File::isFile()
 {
@@ -16,49 +17,53 @@ bool Data::File::isFile()
     return false;
 }
 
-
-void Data::File::readFile()
+void Data::File::read()
 {
     loadFile();
+}
 
+void Data::File::close()
+{
+    closeFile();
+}
+
+std::string Data::File::iterateThroughFile(std::string splitStringByDelimiter, std::string searchTerm)
+{
+    // std::string fileLine;
+
+    // while (std::getline(myFile, fileLine))
+    // {
+    //     std::cout << fileLine;
+    // }
+
+    return "";
 }
 
 bool Data::File::findUserEmail(std::string userProvidedEmail)
 {
+//
+}
+
+int Data::File::colCount()
+{
     std::string fileLine;
-    std::string fileEmail;
+    std::getline(myFile, fileLine);
 
-    while (std::getline(myFile, fileLine))
-    {   
+    int commaCount = 1;
 
-        fileEmail = splitStringByDelimiter(fileLine, 0, ",");
-        if (fileEmail == userProvidedEmail)
+    for (char c : fileLine)
+    {
+        if (c == ',')
         {
-            std::cout << "File Email: " << fileEmail << " User Provided Email: " << userProvidedEmail;
-            return true;
+            commaCount++;
         }
     }
-    std::cout << "User not found";
-    return false;
+    return commaCount;
 }
-// Combine findUserEmail with checkUserPassword;
+// Combine findUserEmail with checkUserPassword and use function iterateThroughFile function;
 bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail)
 {
-
-    std::string fileLine;
-    std::string fileEmail;
-    std::string filePassword;
-    bool isFound;
-
-    while (std::getline(myFile, fileLine))
-    {
-        fileEmail = splitStringByDelimiter(fileLine, 0, ",");
-        filePassword = splitStringByDelimiter(fileLine, fileLine.find(",") + 1, ",");
-        //TODO
-
-        std::cout << fileEmail << " " << filePassword << std::endl;
-    }
-    return true;
+//
 }
 
 void Data::File::loadFile()
@@ -73,8 +78,8 @@ void Data::File::closeFile()
 
 std::string Data::File::splitStringByDelimiter(std::string line, int index, std::string delimiter)
 {
-    std::string newLine;
 
-    newLine = line.substr(0, line.find(","));
+    std::string newLine;
+    newLine = line.substr(line.find(","), 19);
     return newLine;
 }

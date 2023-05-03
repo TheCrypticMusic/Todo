@@ -13,14 +13,17 @@ namespace Data
         std::ifstream myFile;
         void loadFile();
         void closeFile();
-        std::string FILEPATH = "account.txt";
+        std::string iterateThroughFile(std::string splitStringByDelimiter, std::string searchTerm);
+        std::string FILEPATH = "account.csv";
 
     public:
 
         bool isFile();
-        void readFile();
-
+        void read();
+        void close();
+        int colCount();
         std::string splitStringByDelimiter(std::string line, int index, std::string delimiter);
+        std::string splitStringByDelimiter(int index, std::string delimiter);
         bool findUserEmail(std::string userProvidedEmail);
         bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail);
     };

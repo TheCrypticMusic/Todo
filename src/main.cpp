@@ -13,7 +13,7 @@ int main(int argc, const char *argv[])
 
     bool userExists, validPassword;
 
-    Account::Login("gibsonlp@live.co.uk", "test123");
+    Account::Login("gibsonlp@live.co.uk", "gibson");
 
     return 0;
 }
