@@ -5,7 +5,7 @@
 #include <iostream>
 #include <filesystem>
 
-bool Account::Login::accountDetails(std::string email, std::string password)
+bool Account::Login::accountDetails(std::string email, std::string password, std::string username, std::string name, int age)
 {
     // TODO
     return false;
@@ -16,15 +16,19 @@ bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string 
     Data::File myFile;
 
     bool userExists;
+    bool correctPassword;
 
     if (myFile.isFile())
     {
         userExists = checkEmail(userProvidedEmail);
         if (userExists)
         {
-            checkPassword(userProvidedEmail, userProvidedPassword);
+            correctPassword = checkPassword(userProvidedEmail, userProvidedPassword);
+            if (correctPassword)
+            {
+                std::cout << "All details correct.";
+            }
         }
-       
     }
     return true;
 }
@@ -32,6 +36,7 @@ bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string 
 bool Account::Login::checkEmail(std::string userProvidedEmail)
 {
     Data::File myFile;
+    myFile.loadVectorFile();
     bool emailFound;
     emailFound = myFile.findUserEmail(userProvidedEmail);
     if (emailFound) 
@@ -44,7 +49,10 @@ bool Account::Login::checkEmail(std::string userProvidedEmail)
 bool Account::Login::checkPassword(std::string userProvidedEmail, std::string userProvidedPassword)
 {
     Data::File myFile;
+    myFile.loadVectorFile();
+   
     bool correctPasswordForUser;
+   
     correctPasswordForUser = myFile.checkUserPassword(userProvidedPassword, userProvidedEmail);
     if (correctPasswordForUser)
     {

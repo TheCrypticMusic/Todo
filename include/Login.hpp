@@ -14,7 +14,7 @@ namespace Account
 
         Login(std::string, std::string);
 
-        bool accountDetails(std::string email, std::string password);
+        bool accountDetails(std::string email, std::string password, std::string username, std::string name, int age);
 
     private:
         bool checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword);

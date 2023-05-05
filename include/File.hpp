@@ -2,6 +2,7 @@
 #define File_hpp
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 namespace Data
@@ -11,13 +12,14 @@ namespace Data
 
     private:
         std::ifstream myFile;
+        std::vector<std::vector<std::string>> fileToVector();
+        std::vector<std::vector<std::string>> vectorFile;
         void loadFile();
         void closeFile();
-        std::string iterateThroughFile(std::string splitStringByDelimiter, std::string searchTerm);
         std::string FILEPATH = "account.csv";
 
     public:
-
+        void loadVectorFile();
         bool isFile();
         void read();
         void close();
@@ -26,6 +28,7 @@ namespace Data
         std::string splitStringByDelimiter(int index, std::string delimiter);
         bool findUserEmail(std::string userProvidedEmail);
         bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail);
+        
     };
 }
 

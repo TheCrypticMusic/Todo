@@ -27,21 +27,27 @@ void Data::File::close()
     closeFile();
 }
 
-std::string Data::File::iterateThroughFile(std::string splitStringByDelimiter, std::string searchTerm)
+std::vector<std::vector<std::string>> Data::File::fileToVector()
 {
-    // std::string fileLine;
+    read();
+    std::vector<std::vector<std::string>> data;
 
-    // while (std::getline(myFile, fileLine))
-    // {
-    //     std::cout << fileLine;
-    // }
+    std::string line;
+    while (std::getline(myFile, line))
+    {
+        std::vector<std::string> row;
+        std::stringstream lineStream(line);
+        std::string cell;
 
-    return "";
-}
+        while (std::getline(lineStream, cell, ','))
+        {
+            row.push_back(cell);
+        }
 
-bool Data::File::findUserEmail(std::string userProvidedEmail)
-{
-//
+        data.push_back(row);
+    }
+    close();
+    return data;
 }
 
 int Data::File::colCount()
@@ -60,11 +66,35 @@ int Data::File::colCount()
     }
     return commaCount;
 }
+
+bool Data::File::findUserEmail(std::string userProvidedEmail)
+{
+
+    for (const auto &row : vectorFile)
+    {
+        if (userProvidedEmail == row[1]) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 // Combine findUserEmail with checkUserPassword and use function iterateThroughFile function;
 bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail)
 {
-//
+    for (const auto &row : vectorFile)
+    {   
+        if (userProvidedEmail == row[1] && userProvidedPassword == row[2])
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
+
+
 
 void Data::File::loadFile()
 {
@@ -74,6 +104,12 @@ void Data::File::loadFile()
 void Data::File::closeFile()
 {
     myFile.close();
+}
+
+void Data::File::loadVectorFile()
+{
+    std::vector<std::vector<std::string>> data = fileToVector();
+    vectorFile = data;
 }
 
 std::string Data::File::splitStringByDelimiter(std::string line, int index, std::string delimiter)

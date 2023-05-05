@@ -7,11 +7,8 @@ namespace Account {
     struct User
     {
         int uid;
-        std::string name;
-        std::string username;
         std::string email;
         std::string password;
-        int age;
         
         void printUser();
         
