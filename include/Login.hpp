@@ -14,12 +14,13 @@ namespace Account
 
         Login(std::string, std::string);
 
-        bool accountDetails(std::string email, std::string password, std::string username, std::string name, int age);
+        bool accountDetails(std::string email, std::string username, int age);
 
     private:
         bool checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword);
         bool checkEmail(std::string userProvidedEmail);
         bool checkPassword(std::string userProvidedEmail, std::string userProvidedPassword);
+        void login();
     };
 }
 

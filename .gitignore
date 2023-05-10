@@ -3,3 +3,5 @@ build/
 Makefile
 .DS_Store
 account.csv
+login_details.csv
+.gitignore

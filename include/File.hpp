@@ -16,7 +16,7 @@ namespace Data
         std::vector<std::vector<std::string>> vectorFile;
         void loadFile();
         void closeFile();
-        std::string FILEPATH = "account.csv";
+        std::string FILEPATH = "login_details.csv";
 
     public:
         void loadVectorFile();

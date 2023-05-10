@@ -5,11 +5,17 @@
 #include <iostream>
 #include <filesystem>
 
-bool Account::Login::accountDetails(std::string email, std::string password, std::string username, std::string name, int age)
+bool Account::Login::accountDetails(std::string email, std::string username, int age)
 {
-    // TODO
+
     return false;
 };
+
+void login()
+{
+
+}
+
 
 bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword)
 {
