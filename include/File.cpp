@@ -67,6 +67,34 @@ int Data::File::colCount()
     return commaCount;
 }
 
+int Data::File::userUID(std::string userProvidedEmail, std::string userProvidedPassword)
+{
+    loadVectorFile();
+    for (const auto &row : vectorFile)
+    {
+        if(userProvidedEmail == row[1] && userProvidedPassword[2])
+        {
+            int UID = stoi(row[0]);
+            return UID;
+        }
+    }
+    return -1;
+}
+
+std::string Data::File::userUsername(std::string userProvidedEmail, std::string userProvidedPassword)
+{
+   
+    for (const auto &row : vectorFile)
+    {
+        if (userProvidedEmail == row[1] && userProvidedEmail[2])
+        {
+            std::string username = row[4];
+            return username;
+        }
+    }
+    return "No username found";
+}
+
 bool Data::File::findUserEmail(std::string userProvidedEmail)
 {
 
@@ -80,7 +108,6 @@ bool Data::File::findUserEmail(std::string userProvidedEmail)
     return false;
 }
 
-// Combine findUserEmail with checkUserPassword and use function iterateThroughFile function;
 bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail)
 {
     for (const auto &row : vectorFile)
@@ -93,7 +120,6 @@ bool Data::File::checkUserPassword(std::string userProvidedPassword, std::string
 
     return false;
 }
-
 
 
 void Data::File::loadFile()

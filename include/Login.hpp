@@ -2,6 +2,7 @@
 #define Login_hpp
 
 #include <iostream>
+#include "Person.hpp"
 #include "File.hpp"
 
 namespace Account
@@ -14,13 +15,13 @@ namespace Account
 
         Login(std::string, std::string);
 
-        bool accountDetails(std::string email, std::string username, int age);
+        struct Account::User accountDetails(std::string email, std::string username, int UID);
 
     private:
         bool checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword);
         bool checkEmail(std::string userProvidedEmail);
         bool checkPassword(std::string userProvidedEmail, std::string userProvidedPassword);
-        void login();
+        void login(Account::User &user);
     };
 }
 

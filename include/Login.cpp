@@ -5,17 +5,21 @@
 #include <iostream>
 #include <filesystem>
 
-bool Account::Login::accountDetails(std::string email, std::string username, int age)
+struct Account::User Account::Login::accountDetails(std::string email, std::string username, int UID)
 {
-
-    return false;
+    Account::User user;
+    user.email = email;
+    user.username = username;
+    user.uid = UID;
+    return user;
 };
 
-void login()
+void Account::Login::login(Account::User &user)
 {
+    user.loggedIn = true;
+    std::cout << "User Logged In" << std::endl;
 
 }
-
 
 bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword)
 {
@@ -32,7 +36,10 @@ bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string 
             correctPassword = checkPassword(userProvidedEmail, userProvidedPassword);
             if (correctPassword)
             {
-                std::cout << "All details correct.";
+                int UID = myFile.userUID(userProvidedEmail, userProvidedPassword);
+                std::string username = myFile.userUsername(userProvidedEmail, userProvidedPassword);
+                Account::User user = accountDetails(userProvidedEmail, username, UID);
+                login(user);
             }
         }
     }
@@ -69,8 +76,7 @@ bool Account::Login::checkPassword(std::string userProvidedEmail, std::string us
 
 Account::Login::Login(std::string userProvidedEmail, std::string userProvidedPassword)
 {
-    bool correctDetails;
 
-    correctDetails = Account::Login::checkUserExists(userProvidedEmail, userProvidedPassword);
+    Account::Login::checkUserExists(userProvidedEmail, userProvidedPassword);
 
 }

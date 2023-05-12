@@ -28,7 +28,8 @@ namespace Data
         std::string splitStringByDelimiter(int index, std::string delimiter);
         bool findUserEmail(std::string userProvidedEmail);
         bool checkUserPassword(std::string userProvidedPassword, std::string userProvidedEmail);
-        
+        int userUID(std::string userProvidedEmail, std::string userProvidedPassword);
+        std::string userUsername(std::string userProvidedEmail, std::string userProvidedPassword);
     };
 }
 

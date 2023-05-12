@@ -8,8 +8,9 @@ namespace Account {
     {
         int uid;
         std::string email;
-        std::string password;
-        
+        std::string username;
+        bool loggedIn;
+
         void printUser();
         
     };
