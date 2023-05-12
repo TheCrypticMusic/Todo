@@ -7,7 +7,6 @@
 
 struct Account::User Account::Login::accountDetails(std::string email, std::string username, int UID)
 {
-    Account::User user;
     user.email = email;
     user.username = username;
     user.uid = UID;
@@ -20,6 +19,11 @@ void Account::Login::login(Account::User &user)
     std::cout << "User Logged In" << std::endl;
 
 }
+
+struct Account::User Account::Login::getUser()
+{
+    return user;
+};
 
 bool Account::Login::checkUserExists(std::string userProvidedEmail, std::string userProvidedPassword)
 {
@@ -78,5 +82,6 @@ Account::Login::Login(std::string userProvidedEmail, std::string userProvidedPas
 {
 
     Account::Login::checkUserExists(userProvidedEmail, userProvidedPassword);
+
 
 }

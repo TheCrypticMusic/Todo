@@ -4,24 +4,19 @@
 #include "Login.hpp"
 #include "File.hpp"
 #include <filesystem>
-#include <json.hpp>
 #include <fstream>
-using json = nlohmann::json;
+
 
 int main(int argc, const char *argv[])
 {
-    // std::ifstream f("to_do.json");
-    // json data = json::parse(f);
-    // // std::cout << data["todo"]["user_ids"];
-    // json users = data["todo"]["user_ids"];
 
 
     Data::File userAccountsFile;
-    Account::User user;
 
-    Account::Login useruser("gibsonlp@live.co.uk", "gibson");
 
-    
+    Account::Login login("gibsonlp@live.co.uk", "gibson");
+    Account::User user = login.getUser();
+    std::cout << user.uid << " " << user.email << std::endl;
 
     return 0;
 }

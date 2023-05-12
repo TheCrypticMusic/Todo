@@ -4,6 +4,7 @@
 #include <filesystem>
 #include "Login.hpp"
 #include <vector>
+#include <sstream>
 
 bool Data::File::isFile()
 {
