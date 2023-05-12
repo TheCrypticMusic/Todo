@@ -89,7 +89,7 @@ std::string Data::File::userUsername(std::string userProvidedEmail, std::string 
     {
         if (userProvidedEmail == row[1] && userProvidedEmail[2])
         {
-            std::string username = row[4];
+            std::string username = row[3];
             return username;
         }
     }
