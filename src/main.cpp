@@ -9,10 +9,23 @@
 
 int main(int argc, const char *argv[])
 {
+    // std::string email;
+    // std::string password;
+
+    // std::cout << "Enter email address: ";
+    // std::cin >> email;
+
+    // std::cout << "Enter password: ";
+    // std::cin >> password;
+
+    // Account::Login login(email, password); 
 
     Account::Login login("gibsonlp@live.co.uk", "gibson");
     Account::User user = login.getUser();
-    std::cout << user.uid << " " << user.email << " " << user.username << " " << std::endl;
+
+
+
+    // user.printUser();
 
     return 0;
 }
