@@ -23,7 +23,7 @@ int main(int argc, const char *argv[])
     Account::Login login("gibsonlp@live.co.uk", "gibson");
     Account::User user = login.getUser();
 
-
+    user.printUserTodos();
 
     // user.printUser();
 

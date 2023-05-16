@@ -12,8 +12,8 @@ namespace Account {
         bool loggedIn;
 
         void printUser();
-        
-    };
+        void printUserTodos();
+        };
 }
 
 #endif

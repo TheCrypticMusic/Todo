@@ -9,7 +9,7 @@ namespace Data {
         Account::User user;
         std::string task;
         std::string date;
-        void printTodo();
+        void printTodos(int uid);
         };
 }
 
