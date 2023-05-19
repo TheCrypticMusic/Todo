@@ -9,7 +9,8 @@ namespace Data {
         Account::User user;
         std::string task;
         std::string date;
-        void printTodos(int uid);
+        void printActiveTodos(int uid);
+        void addNewTodo(int uid, std::string name, std::string content, std::string finishData);
         };
 }
 

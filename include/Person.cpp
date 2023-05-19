@@ -9,5 +9,7 @@ void Account::User::printUser()
 
 void Account::User::printUserTodos()
 {
-    Data::Todo::printTodo(uid);
+    Data::Todo todo;
+    // todo.printActiveTodos(uid);
+    todo.addNewTodo(uid, "Task 5", "testtest", "test date");
 }
