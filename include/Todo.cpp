@@ -27,16 +27,14 @@ void Data::Todo::addNewTodo(int uid, std::string name, std::string content, std:
 {
 	std::ifstream f("to_do.json");
 	json data = json::parse(f);
-	json activeTasks = data["todo"]["user_ids"][0][std::to_string(uid)]["active"];
-	std::cout << activeTasks << std::endl;
-	json test = data["todo"]["user_ids"][0][std::to_string(uid)];
+
 	json newData;
 	newData["content"] = "Hello";
 	newData["name"] = "test";
 	newData["finish_date"] = "f";
 
-	activeTasks.push_back(newData);
-	std::cout << activeTasks << std::endl;
+	data["todo"]["user_ids"][0][std::to_string(uid)]["active"].push_back(newData);
+
 	std::ofstream o("to_do.json");
-	o << activeTasks;
+	o << data.dump(4);
 }
