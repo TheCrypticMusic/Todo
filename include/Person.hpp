@@ -13,6 +13,7 @@ namespace Account {
 
         void printUser();
         void printUserTodos();
+        void addNewTodo(std::string nameOfTask, std::string content, std::string date);
         };
 }
 

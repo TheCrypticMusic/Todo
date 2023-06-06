@@ -26,11 +26,6 @@
                             "content": "Hello",
                             "finish_date": "f",
                             "name": "test"
-                        },
-                        {
-                            "content": "Hello",
-                            "finish_date": "f",
-                            "name": "test"
                         }
                     ],
                     "completed": [

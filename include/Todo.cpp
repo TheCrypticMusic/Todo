@@ -23,15 +23,15 @@ void Data::Todo::printActiveTodos(int uid)
 	// }
 }
 
-void Data::Todo::addNewTodo(int uid, std::string name, std::string content, std::string finishData)
+void Data::Todo::addNewTodo(int uid, std::string name, std::string content, std::string date)
 {
 	std::ifstream f("to_do.json");
 	json data = json::parse(f);
 
 	json newData;
-	newData["content"] = "Hello";
-	newData["name"] = "test";
-	newData["finish_date"] = "f";
+	newData["content"] = content;
+	newData["name"] = name;
+	newData["finish_date"] = date;
 
 	data["todo"]["user_ids"][0][std::to_string(uid)]["active"].push_back(newData);
 
