@@ -25,9 +25,11 @@ int main(int argc, const char *argv[])
 
     // user.printUserTodos();
     // user.addNewTodo()
-
-
-    // user.printUser();
+    std::string userArguement = argv[1];
+    if (userArguement == "add")
+    {
+        user.addNewTodo();
+    }
 
     return 0;
 }
