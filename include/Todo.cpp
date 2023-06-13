@@ -28,13 +28,23 @@ void Data::Todo::addNewTodo(int uid, std::string name, std::string content, std:
 	std::ifstream f("to_do.json");
 	json data = json::parse(f);
 
-	json newData;
-	newData["content"] = content;
-	newData["name"] = name;
-	newData["finish_date"] = date;
+	doesExist(uid, name, data);
 
-	data["todo"]["user_ids"][0][std::to_string(uid)]["active"].push_back(newData);
+	// json newData;
+	// newData["content"] = content;
+	// newData["name"] = name;
+	// newData["finish_date"] = date;
 
-	std::ofstream o("to_do.json");
-	o << data.dump(4);
+	// data["todo"]["user_ids"][0][std::to_string(uid)]["active"].push_back(newData);
+
+	// std::ofstream o("to_do.json");
+	// o << data.dump(4);
+}
+
+bool Data::Todo::doesExist(int uid, std::string name, json &data)
+{
+
+	std::cout << data["todo"]["user_ids"][0][std::to_string(uid)]["active"];
+
+	return true;
 }

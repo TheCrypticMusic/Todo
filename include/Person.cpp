@@ -1,6 +1,8 @@
 #include "Person.hpp"
 #include "Todo.hpp"
 #include <iostream>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 void Account::User::printUser() 
 {
@@ -24,15 +26,16 @@ void Account::User::addNewTodo()
     std::string content;
     std::string date;
 
-    std::cout << "Enter the name of new task: " << std::endl;
+//     std::cout << "Enter the name of new task: " << std::endl;
+// x
+//     std::cin >> nameOfTask;
 
-    std::cin >> nameOfTask;
 
-    std::cout << "Enter the content of the task: " << std::endl;
-    std::cin >> content;
+    // std::cout << "Enter the content of the task: " << std::endl;
+    // std::cin >> content;
 
-    std::cout << "Enter date: " << std::endl;
-    std::cin >> date;
+    // std::cout << "Enter date: " << std::endl;
+    // std::cin >> date;
 
-    todo.addNewTodo(uid, nameOfTask, content, date);
+    todo.addNewTodo(uid, "nameOfTask", "content", "date");
 }
